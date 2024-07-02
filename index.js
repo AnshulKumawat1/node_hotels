@@ -4,6 +4,10 @@ const app = express();
 const mongoose = require('mongoose');
 const Person=require('./models/person');
 const MenuItem=require('./models/MenuItem');
+require("dotenv").config();
+const PORT=process.env.PORT||4000;
+const mongodbURL=process.env.mongodbURL
+
 // mongoose.connect('mongodb://localhost:27017/hotels')
 //   .then(() => console.log("mongoconnected"))
 //   .catch((err) => console.log("mongoerror", err));
@@ -28,6 +32,7 @@ const menuRoutes=require('./routes/menuRoutes');
 const personRoutes=require('./routes/personRoutes');
 app.use('/person',personRoutes);
 app.use('/menu',menuRoutes);
+
 
 app.listen(4000, () => {
   console.log("working server");
